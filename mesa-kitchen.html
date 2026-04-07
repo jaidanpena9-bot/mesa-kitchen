@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mesa Kitchen — Abilene, TX</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #faf8f4;
+    --dark: #1c1712;
+    --brown: #3d2b1f;
+    --terra: #c45c3a;
+    --terra-light: #e07a5f;
+    --sand: #e8d5b7;
+    --sage: #7a9b76;
+    --cream: #f7f2e8;
+    --gray: #8a7f74;
+    --border: rgba(60,40,25,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--dark); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.2rem 3rem;
+    background: rgba(250,248,244,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem; font-weight: 700;
+    color: var(--brown); letter-spacing: 0.02em;
+  }
+  .logo span { color: var(--terra); font-style: italic; }
+  nav ul { list-style: none; display: flex; gap: 2.5rem; align-items: center; }
+  nav a { color: var(--dark); text-decoration: none; font-size: 0.85rem; font-weight: 400; letter-spacing: 0.08em; opacity: 0.7; transition: opacity 0.2s; }
+  nav a:hover { opacity: 1; }
+  .nav-order {
+    background: var(--terra); color: white !important;
+    padding: 0.55rem 1.3rem; border-radius: 100px;
+    opacity: 1 !important; font-weight: 500 !important;
+    transition: background 0.2s !important;
+  }
+  .nav-order:hover { background: var(--terra-light) !important; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 8rem 3rem 5rem;
+    background: var(--cream);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg-text {
+    position: absolute; right: -2rem; top: 50%;
+    transform: translateY(-50%);
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(120px, 18vw, 220px);
+    color: rgba(196,92,58,0.05);
+    font-weight: 700; line-height: 1;
+    pointer-events: none; white-space: nowrap;
+    user-select: none;
+  }
+
+  .hero-inner {
+    max-width: 700px;
+    animation: fadeUp 0.9s ease both;
+  }
+  .hero-kicker {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    font-size: 0.75rem; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 1.5rem;
+  }
+  .hero-kicker::before, .hero-kicker::after {
+    content: ''; width: 24px; height: 1px; background: var(--terra); opacity: 0.5;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 7vw, 6rem);
+    line-height: 1.05; font-weight: 700;
+    color: var(--brown);
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 em { color: var(--terra); font-style: italic; }
+  .hero p {
+    font-size: 1.1rem; color: var(--gray);
+    line-height: 1.75; max-width: 480px;
+    margin-bottom: 2.5rem;
+  }
+  .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 3.5rem; }
+  .btn-terra {
+    background: var(--terra); color: white;
+    padding: 0.9rem 2rem; border-radius: 100px;
+    font-weight: 500; font-size: 0.9rem; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-terra:hover { background: var(--terra-light); transform: translateY(-1px); }
+  .btn-outline-dark {
+    border: 1.5px solid rgba(60,40,25,0.25); color: var(--brown);
+    padding: 0.9rem 2rem; border-radius: 100px;
+    font-weight: 400; font-size: 0.9rem; text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .btn-outline-dark:hover { border-color: var(--terra); color: var(--terra); }
+
+  .hero-details {
+    display: flex; gap: 2.5rem; flex-wrap: wrap;
+  }
+  .hero-detail { font-size: 0.82rem; color: var(--gray); }
+  .hero-detail strong { display: block; color: var(--dark); font-weight: 500; font-size: 0.88rem; margin-bottom: 0.1rem; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* SECTION BASE */
+  section { padding: 6rem 3rem; }
+  .section-eyebrow {
+    font-size: 0.72rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--terra); margin-bottom: 0.8rem;
+  }
+  h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 700;
+    color: var(--brown); margin-bottom: 0.8rem;
+  }
+
+  /* HIGHLIGHTS */
+  .highlights-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem; margin-top: 3rem;
+  }
+  .highlight {
+    background: var(--cream); border-radius: 16px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border);
+    position: relative; overflow: hidden;
+    transition: box-shadow 0.3s;
+  }
+  .highlight:hover { box-shadow: 0 12px 36px rgba(60,40,25,0.08); }
+  .highlight-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem; color: rgba(196,92,58,0.12);
+    font-weight: 700; position: absolute; top: 1rem; right: 1.5rem;
+    line-height: 1;
+  }
+  .highlight-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .highlight h3 { font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--brown); }
+  .highlight p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+  /* MENU */
+  .menu-section { background: var(--dark); color: white; }
+  .menu-section .section-eyebrow { color: var(--terra-light); }
+  .menu-section h2 { color: var(--sand); }
+  .menu-tabs {
+    display: flex; gap: 0.5rem; margin: 2rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 0;
+  }
+  .tab-btn {
+    padding: 0.6rem 1.4rem; font-family: 'Jost', sans-serif;
+    font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase;
+    background: none; border: none; color: rgba(255,255,255,0.45);
+    cursor: pointer; border-bottom: 2px solid transparent;
+    margin-bottom: -1px; transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn.active { color: var(--terra-light); border-bottom-color: var(--terra-light); }
+  .menu-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1px; background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .menu-item {
+    background: var(--dark); padding: 1.8rem;
+    display: flex; justify-content: space-between; align-items: flex-start;
+    gap: 1rem; transition: background 0.2s;
+  }
+  .menu-item:hover { background: #231f1a; }
+  .menu-item-info h4 { font-weight: 500; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .menu-item-info p { font-size: 0.8rem; color: rgba(255,255,255,0.45); line-height: 1.5; }
+  .menu-item-price {
+    font-family: 'Playfair Display', serif; font-style: italic;
+    color: var(--terra-light); font-size: 1.1rem; white-space: nowrap;
+  }
+  .menu-badge {
+    font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(196,92,58,0.2); color: var(--terra-light);
+    padding: 0.15rem 0.5rem; border-radius: 100px; margin-left: 0.5rem;
+  }
+
+  /* INFO BAR */
+  .info-bar {
+    background: var(--terra);
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    text-align: center;
+  }
+  .info-cell {
+    padding: 2.5rem 2rem;
+    border-right: 1px solid rgba(255,255,255,0.15);
+  }
+  .info-cell:last-child { border-right: none; }
+  .info-cell-label {
+    font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: rgba(255,255,255,0.65); margin-bottom: 0.5rem;
+  }
+  .info-cell-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem; color: white; font-weight: 700;
+  }
+  .info-cell-val small { display: block; font-family: 'Jost', sans-serif; font-weight: 300; font-size: 0.82rem; color: rgba(255,255,255,0.7); margin-top: 0.2rem; font-style: normal; }
+
+  /* ORDER CTA */
+  .order-cta { text-align: center; background: var(--cream); }
+  .order-cta h2 { margin-bottom: 1rem; }
+  .order-cta p { color: var(--gray); max-width: 400px; margin: 0 auto 2.5rem; }
+
+  footer {
+    background: var(--brown); color: rgba(255,255,255,0.45);
+    padding: 1.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.8rem;
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    nav ul { display: none; }
+    .hero { padding: 6rem 1.5rem 3rem; }
+    section { padding: 4rem 1.5rem; }
+    .highlights-grid { grid-template-columns: 1fr; }
+    .info-bar { grid-template-columns: 1fr; }
+    .info-cell { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    footer { flex-direction: column; gap: 0.5rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Mesa <span>Kitchen</span></div>
+  <ul>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#hours">Hours</a></li>
+    <li><a href="#order" class="nav-order">Order Online</a></li>
+  </ul>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg-text">MESA</div>
+  <div class="hero-inner">
+    <div class="hero-kicker">Abilene, Texas</div>
+    <h1>Bold Flavors.<br><em>Real Food.</em><br>Good People.</h1>
+    <p>Fresh Tex-Mex made from scratch. Family recipes, house-made salsas, and cold drinks. Dine in, carry out, or order online.</p>
+    <div class="hero-ctas">
+      <a href="#order" class="btn-terra">Order Online</a>
+      <a href="#menu" class="btn-outline-dark">View Menu</a>
+    </div>
+    <div class="hero-details">
+      <div class="hero-detail">
+        <strong>📍 Location</strong>
+        2801 S 14th St, Abilene, TX
+      </div>
+      <div class="hero-detail">
+        <strong>🕙 Open Today</strong>
+        11am – 9pm
+      </div>
+      <div class="hero-detail">
+        <strong>📞 Call Us</strong>
+        (325) 555-0300
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-eyebrow">Why Mesa</div>
+  <h2>Made to Enjoy</h2>
+  <div class="highlights-grid">
+    <div class="highlight">
+      <div class="highlight-num">01</div>
+      <div class="highlight-icon">🌿</div>
+      <h3>Made Fresh Daily</h3>
+      <p>No frozen shortcuts. Our tortillas, salsas, and guacamole are made fresh every single morning.</p>
+    </div>
+    <div class="highlight">
+      <div class="highlight-num">02</div>
+      <div class="highlight-icon">🏠</div>
+      <h3>Family Owned</h3>
+      <p>A local Abilene family restaurant since 2014. We know your name and remember your order.</p>
+    </div>
+    <div class="highlight">
+      <div class="highlight-num">03</div>
+      <div class="highlight-icon">📦</div>
+      <h3>Easy Carry-Out</h3>
+      <p>Order online or call ahead. Ready in 15 minutes, packed to stay hot and fresh.</p>
+    </div>
+  </div>
+</section>
+
+<section class="menu-section" id="menu">
+  <div class="section-eyebrow">What We Serve</div>
+  <h2>Our Menu</h2>
+  <div class="menu-tabs">
+    <button class="tab-btn active">Starters</button>
+    <button class="tab-btn">Tacos</button>
+    <button class="tab-btn">Plates</button>
+    <button class="tab-btn">Drinks</button>
+  </div>
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Queso Fundido <span class="menu-badge">Fan Fav</span></h4>
+        <p>Melted Oaxacan cheese, chorizo, roasted peppers, fresh tortillas</p>
+      </div>
+      <div class="menu-item-price">$9</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>House Guacamole</h4>
+        <p>Made fresh to order, Hass avocado, lime, jalapeño, cilantro</p>
+      </div>
+      <div class="menu-item-price">$8</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Elote Street Corn</h4>
+        <p>Grilled corn on the cob, mayo crema, cotija, chile powder</p>
+      </div>
+      <div class="menu-item-price">$6</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Tortilla Soup</h4>
+        <p>Slow-cooked chicken broth, crispy strips, avocado, cheese</p>
+      </div>
+      <div class="menu-item-price">$7</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Salsa Trio + Chips <span class="menu-badge">Complimentary</span></h4>
+        <p>Roja, verde, and habanero mango — all made in-house daily</p>
+      </div>
+      <div class="menu-item-price">Free</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-info">
+        <h4>Shrimp Ceviche</h4>
+        <p>Fresh shrimp, lime, cucumber, tomato, onion, tostadas</p>
+      </div>
+      <div class="menu-item-price">$11</div>
+    </div>
+  </div>
+</section>
+
+<div class="info-bar" id="hours">
+  <div class="info-cell">
+    <div class="info-cell-label">Hours</div>
+    <div class="info-cell-val">
+      Mon – Thu: 11am – 9pm
+      <small>Fri – Sat: 11am – 10pm · Sun: 12pm – 8pm</small>
+    </div>
+  </div>
+  <div class="info-cell">
+    <div class="info-cell-label">Location</div>
+    <div class="info-cell-val">
+      2801 S 14th St
+      <small>Abilene, TX 79605</small>
+    </div>
+  </div>
+  <div class="info-cell">
+    <div class="info-cell-label">Reservations</div>
+    <div class="info-cell-val">
+      (325) 555-0300
+      <small>Walk-ins always welcome</small>
+    </div>
+  </div>
+</div>
+
+<section class="order-cta" id="order">
+  <div class="section-eyebrow">Skip the Line</div>
+  <h2>Order Online</h2>
+  <p>Ready in 15 minutes. Pay ahead, pick up at the door. Easy.</p>
+  <a href="tel:3255550300" class="btn-terra" style="font-size: 1rem; padding: 1rem 2.5rem;">📞 Call to Order — (325) 555-0300</a>
+</section>
+
+<footer>
+  <span>© 2025 Mesa Kitchen — Abilene, TX</span>
+  <span>Site by Jaidan Pena Web Design</span>
+</footer>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
